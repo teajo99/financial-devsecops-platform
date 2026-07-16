@@ -1,28 +1,19 @@
 stages:
   - build
-  - security
-  - push
-  - deploy
 
 variables:
-
-  AWS_REGION: eu-west-2
-
-  IMAGE_NAME: financial-api
-
-  IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+  AWS_REGION: "eu-west-2"
+  IMAGE_NAME: "financial-api"
+  IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
+  DOCKER_TLS_CERTDIR: ""
 
 build:
-
   stage: build
 
   image: docker:24
 
   services:
     - docker:24-dind
-
-  variables:
-    DOCKER_TLS_CERTDIR: ""
 
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
