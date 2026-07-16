@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: financial-api
+
+spec:
+
+  replicas: 2
+
+  selector:
+
+    matchLabels:
+
+      app: financial-api
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: financial-api
+
+    spec:
+
+      containers:
+
+      - name: financial-api
+
+        image: 942909610648.dkr.ecr.eu-west-2.amazonaws.com/financial-api:v1
+        ports:
+
+        - containerPort: 80
