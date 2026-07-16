@@ -19,7 +19,10 @@ build:
 
 security_scan:
   stage: security
-  image: aquasec/trivy:latest
+  image:
+    name: aquasec/trivy:latest
+    entrypoint: [""]
+
   script:
     - trivy config .
 
