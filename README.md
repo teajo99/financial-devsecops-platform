@@ -217,13 +217,7 @@ Used for:
 Pipeline stages:
 
 
-Build
-|
-Security Scan
-|
-Push Image
-|
-Deploy
+Build - Security Scan - Push Image- Deploy
 
 
 ---
@@ -283,9 +277,9 @@ Created Docker configuration:
 
 app/
 
-├── app.py
-├── Dockerfile
-└── requirements.txt
+─ app.py
+─ Dockerfile
+─ requirements.txt
 
 
 Built application container:
@@ -479,13 +473,13 @@ Adjusted CI/CD container strategy by using compatible AWS tooling images instead
 
 The completed platform demonstrates:
 
-✅ Automated cloud infrastructure provisioning  
-✅ Containerised application delivery  
-✅ Secure image management  
-✅ Kubernetes orchestration  
-✅ CI/CD automation  
-✅ Security scanning integration  
-✅ Monitoring and observability  
+- Automated cloud infrastructure provisioning  
+- Containerised application delivery  
+- Secure image management  
+- Kubernetes orchestration  
+- CI/CD automation  
+- Security scanning integration  
+- Monitoring and observability  
 
 ---
 
@@ -526,4 +520,4 @@ This project represents an end-to-end DevSecOps implementation for a financial a
 
 The solution demonstrates how modern engineering teams can combine cloud infrastructure, automation, security practices, and monitoring to deliver reliable and secure applications at scale.
 
-The project was built to reflect real-world enterprise requirements and demonstrate prac
+The project was built to reflect real-world enterprise requirements and demonstrate practical skills required for a Cloud Engineer / DevOps Engineer role.
