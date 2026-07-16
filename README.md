@@ -153,51 +153,7 @@ This provides visibility into:
 
 # Solution Architecture
 
-
-Developer
-|
-|
-v
-GitLab Repository
-|
-|
-v
-GitLab CI/CD Pipeline
-
-|
-+----------------------+
-|                      |
-v                      v
-
-Docker Build Trivy Security Scan
-
-|
-|
-v
-
-Amazon ECR
-(Container Registry)
-
-|
-|
-v
-
-Amazon EKS Kubernetes Cluster
-
-|
-|
-v
-
-Financial API Application
-
-|
-|
-v
-
-Prometheus + Grafana Monitoring
-
-
----
+![image alt](https://github.com/teajo99/financial-devsecops-platform/blob/1defb5b21babb877aa47bc56187e261b524f84b1/Devsecops%20Diagram.gif)
 
 # Technologies Used
 
