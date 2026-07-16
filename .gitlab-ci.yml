@@ -1,5 +1,6 @@
 stages:
   - build
+  - security
 
 variables:
   AWS_REGION: "eu-west-2"
@@ -17,3 +18,14 @@ build:
 
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
+
+
+security_scan:
+  stage: security
+
+  image:
+    name: aquasec/trivy:latest
+    entrypoint: [""]
+
+  script:
+    - trivy image --severity HIGH,CRITICAL $IMAGE_NAME:$IMAGE_TAG
