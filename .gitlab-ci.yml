@@ -3,11 +3,12 @@ stages:
   - security
   - push
 
+
 variables:
   AWS_REGION: "eu-west-2"
+  AWS_ACCOUNT_ID: "942909610648"
   IMAGE_NAME: "financial-api"
   IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
-  AWS_ACCOUNT_ID: "942909610648"
   DOCKER_TLS_CERTDIR: ""
 
 
@@ -18,10 +19,16 @@ build:
   image: docker:24
 
   services:
-    - docker:24-dind
+    - name: docker:24-dind
+      alias: docker
+
+  variables:
+    DOCKER_HOST: tcp://docker:2375
 
   script:
+
     - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
+
 
 
 security_scan:
@@ -31,15 +38,25 @@ security_scan:
   image: docker:24
 
   services:
-    - docker:24-dind
+    - name: docker:24-dind
+      alias: docker
+
+  variables:
+    DOCKER_HOST: tcp://docker:2375
 
   before_script:
+
     - apk add --no-cache curl
+
     - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
 
+
   script:
+
     - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
+
     - ./bin/trivy image --severity HIGH,CRITICAL $IMAGE_NAME:$IMAGE_TAG
+
 
 
 push_ecr:
@@ -47,21 +64,29 @@ push_ecr:
   stage: push
 
   image:
+
     name: amazon/aws-cli:latest
+
     entrypoint: [""]
 
+
   services:
+
     - name: docker:24-dind
       alias: docker
 
+
   variables:
+
     DOCKER_HOST: tcp://docker:2375
-    DOCKER_TLS_CERTDIR: ""
+
 
   before_script:
 
     - yum install -y docker
+
     - docker --version
+
     - aws --version
 
 
@@ -74,28 +99,3 @@ push_ecr:
     - docker tag $IMAGE_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
 
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
-
-  script:
-
-    - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-
-    - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
-
-    - docker tag $IMAGE_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
-
-    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
-
-  script:
-
-    - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-
-    - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
-
-
-    - docker tag \
-      $IMAGE_NAME:$IMAGE_TAG \
-      $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
-
-
-    - docker push \
-      $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
