@@ -6,7 +6,7 @@ stages:
 
 variables:
   AWS_REGION: "eu-west-2"
-  AWS_ACCOUNT_ID: "942909610648"
+  AWS_ACCOUNT_ID: "*"
   EKS_CLUSTER_NAME: "financial-devsecops"
   IMAGE_NAME: "financial-api"
   IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
