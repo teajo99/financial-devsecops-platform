@@ -1,13 +1,18 @@
 stages:
   - build
   - security
+  - push
 
 variables:
+  AWS_REGION: "eu-west-2"
   IMAGE_NAME: "financial-api"
   IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
+  AWS_ACCOUNT_ID: "942909610648"
   DOCKER_TLS_CERTDIR: ""
 
+
 build:
+
   stage: build
 
   image: docker:24
@@ -35,3 +40,40 @@ security_scan:
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
     - ./bin/trivy image --severity HIGH,CRITICAL $IMAGE_NAME:$IMAGE_TAG
+
+
+push_ecr:
+
+  stage: push
+
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+
+  services:
+    - docker:24-dind
+
+  before_script:
+
+    - yum install -y docker
+
+    - aws --version
+
+
+  script:
+
+    - aws ecr get-login-password --region $AWS_REGION |
+      docker login --username AWS --password-stdin \
+      $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+
+
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG app/
+
+
+    - docker tag \
+      $IMAGE_NAME:$IMAGE_TAG \
+      $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
+
+
+    - docker push \
+      $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:$IMAGE_TAG
