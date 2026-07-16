@@ -1,0 +1,21 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Terraform logs
+crash.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.log
