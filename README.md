@@ -1,5 +1,15 @@
 # Financial DevSecOps Platform
 
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-Infrastructure%20as%20Code-623CE4?logo=terraform&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED?logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?logo=kubernetes&logoColor=white)
+![GitLab CI](https://img.shields.io/badge/GitLab-CI%2FCD-FCA121?logo=gitlab&logoColor=white)
+![Trivy](https://img.shields.io/badge/Security-Trivy-1904DA?logo=aqua&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C?logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Dashboard-Grafana-F46800?logo=grafana&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-Server-FCC624?logo=linux&logoColor=black)
+
 ## Cloud-Native Financial Application Platform Built with AWS, Terraform, Docker, Kubernetes, GitLab CI/CD and Security Automation
 
 ---
