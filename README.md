@@ -16,13 +16,26 @@
 
 # Project Overview
 
-The Financial DevSecOps Platform is a cloud-native application delivery platform designed to demonstrate how modern financial systems can be built, secured, deployed, and monitored using industry-standard DevOps and cloud engineering practices.
-
-The project simulates a real-world financial organisation that requires a secure, scalable, and highly available application platform while maintaining strong security controls and operational visibility.
-
-The objective was to design an end-to-end DevSecOps solution that automates infrastructure provisioning, application delivery, security testing, container management, Kubernetes deployment, and monitoring.
-
+End-to-end cloud-native financial application platform built with AWS, Terraform, Docker, Amazon EKS, GitLab CI/CD, Trivy, Prometheus, and Grafana. The platform demonstrates secure infrastructure provisioning, automated deployments, vulnerability scanning, Kubernetes orchestration, and monitoring.
 ---
+
+# Architecture Diagram
+
+![image alt](https://github.com/teajo99/financial-devsecops-platform/blob/1defb5b21babb877aa47bc56187e261b524f84b1/Devsecops%20Diagram.gif)
+
+# Technologies Used
+
+## Cloud Platform
+
+- Amazon Web Services (AWS)
+
+Services:
+
+- Amazon VPC
+- Amazon EKS
+- Amazon ECR
+- IAM
+- EC2
 
 # Why I Created This Project
 
@@ -158,28 +171,6 @@ This provides visibility into:
 - Application performance
 - Resource utilisation
 - Infrastructure status
-
----
-
-# Solution Architecture
-
-![image alt](https://github.com/teajo99/financial-devsecops-platform/blob/1defb5b21babb877aa47bc56187e261b524f84b1/Devsecops%20Diagram.gif)
-
-# Technologies Used
-
-## Cloud Platform
-
-- Amazon Web Services (AWS)
-
-Services:
-
-- Amazon VPC
-- Amazon EKS
-- Amazon ECR
-- IAM
-- EC2
-
----
 
 ## Infrastructure
 
