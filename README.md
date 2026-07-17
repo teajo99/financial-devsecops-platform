@@ -20,7 +20,7 @@ End-to-end cloud-native financial application platform built with AWS, Terraform
 
 # Architecture Diagram
 
-![image alt](https://github.com/teajo99/financial-devsecops-platform/blob/1defb5b21babb877aa47bc56187e261b524f84b1/Devsecops%20Diagram.gif)
+![image alt](https://github.com/teajo99/financial-devsecops-platform/blob/48a4245e50289464e99ee35daa0c1ef72580b79e/DveSecOps%20Architecture%20Diagram.gif)
 
 # Technologies Used
 
