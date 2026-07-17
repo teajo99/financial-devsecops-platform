@@ -13,8 +13,7 @@
 ## Cloud-Native Financial Application Platform Built with AWS, Terraform, Docker, Kubernetes, GitLab CI/CD and Security Automation
 
 ---
-
-# Project Overview
+## Project Overview
 
 End-to-end cloud-native financial application platform built with AWS, Terraform, Docker, Amazon EKS, GitLab CI/CD, Trivy, Prometheus, and Grafana. The platform demonstrates secure infrastructure provisioning, automated deployments, vulnerability scanning, Kubernetes orchestration, and monitoring.
 ---
